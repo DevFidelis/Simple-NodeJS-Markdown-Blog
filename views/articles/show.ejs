@@ -1,0 +1,17 @@
+<%- include('../partials/header'); %> 
+
+<header>
+    <h1 class="title"><%= article.title %></h1>
+    <div class="subtitle">
+        <%= article.createdAt.toLocaleDateString() %>
+    </div>
+</header>
+<div class="form-btns" style="padding-top: 10px;">
+    <a href="/" class="btn-gray">All Articles</a>
+    <a href="/articles/edit/<%= article.id %>" class="btn-submit" style="padding: 8px 15px;">Edit</a>
+</div>
+<div class="article-block">
+    <%- article.sanitizedHTML %>
+</div>
+
+<%- include('../partials/footer'); %>

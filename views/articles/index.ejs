@@ -1,0 +1,30 @@
+<%- include('../partials/header'); %>
+
+<header>Blog Articles</header>
+<nav>
+    <a href="/articles/create" class="btn-success">New Article</a>
+</nav>
+<article>
+    <% articles.forEach(article => { %>
+        <div class="inner-container">
+            <h3 class="title">
+                <%= article.title %>
+            </h3>
+            <div class="subtitle">
+                <%= article.createdAt.toLocaleDateString() %>
+            </div>
+            <p class="short-bio">
+                <%= article.description %> 
+            </p>
+            <div class="form-btns">
+                <a href="/articles/<%= article.slug %>" class="btn-gray">Read More</a>
+                <a href="/articles/edit/<%= article.id %>" class="btn-gray" style="background-color:dodgerblue">Edit</a>
+                <form action="/articles/<%= article.id %>?_method=DELETE" method="post">
+                    <button type="submit" name="delete" class="btn-submit" style="background-color:firebrick;">Delete</button>
+                </form>
+            </div>
+        </div>
+    <% }); %>
+</article>
+
+<%- include('../partials/footer'); %>
